@@ -2,13 +2,13 @@ import pandas as file
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 
-forest_model = RandomForestClassifier(criterion='gini',
-                            n_estimators=1000,
-                            min_samples_split=12,
+forest_model = RandomForestClassifier(criterion='gini',      
+                            n_estimators=60,
+                            min_samples_split=11,
                             min_samples_leaf=1,
                             oob_score=True,
-                            random_state=1,
-                            n_jobs=-1)
+                            random_state=0,
+                            n_jobs=1)
 
 data = file.read_csv('./train.csv')
 
@@ -47,7 +47,6 @@ test = test.drop(['Attribute13'],axis=1)
 test = test.drop(['Attribute14'],axis=1)
 test = test.drop(['Attribute15'],axis=1)
 
-#predict = model.predict(test)
 predict = forest_model.predict(test)
 ans = []
 for row in predict:
