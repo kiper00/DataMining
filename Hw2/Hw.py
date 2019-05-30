@@ -5,11 +5,10 @@ from sklearn.cluster import KMeans
 from sklearn import cluster, datasets, metrics
 #分群 K-means
 
-model = KMeans(n_clusters = 6)
+model = KMeans(n_clusters = 16)
 data = file.read_csv("./data.csv")
-data.drop(['feature1'],axis=1)
+data.drop(['id'],axis=1)
 predict = model.fit(data).labels_
-
 
 ans = []
 for row in predict:
